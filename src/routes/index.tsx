@@ -4,7 +4,13 @@ import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import React, { useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Bell, Search, Settings } from "lucide-react";
+import {
+  Bell,
+  CalendarDays,
+  NotebookTabs,
+  Search,
+  Settings,
+} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Progress } from "~/components/ui/progress";
 
@@ -132,7 +138,120 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="px-10 py-20"></div>
+        <div className="px-10 py-20 space-y-14 bg-[#F8F9FA]">
+          <div className="text-center">
+            <h2 className="font-bold text-[32px] text-primary">
+              Tudo o que sua família precisa
+            </h2>
+            <h3 className="text-center text-chart-2 text-lg">
+              Ferramentas desenhadas para serem intuitivas para todas as
+              gerações, dos netos aos avós.
+            </h3>
+          </div>
+          <div className="space-y-12">
+            <div className="flex justify-between items-center gap-10">
+              <div className="rounded-md px-12 py-20 bg-background shadow-md flex items-center justify-between w-210">
+                <div className="space-y-2 w-80.75">
+                  <div className="bg-[#CCEACC] size-14 flex justify-center items-center rounded-md">
+                    <NotebookTabs className="text-[#47614A]" />
+                  </div>
+                  <h2 className="font-semibold text-2xl text-primary">
+                    Finanças Transparentes
+                  </h2>
+                  <p className="text-chart-2">
+                    Gerencie contribuições para festas, viagens ou presentes
+                    coletivos com clareza total. Sem cobranças desconfortáveis,
+                    apenas colaboração.
+                  </p>
+                </div>
+
+                <div className="bg-[#F3F4F5] p-6 w-86.75 h-43 rounded-md ">
+                  <div className="space-y-2">
+                    <div className="p-3 flex justify-between items-center bg-background rounded-md">
+                      <div className="flex items-center gap-x-2">
+                        <span className="bg-[#D5E3FF] size-8 flex rounded-full" />
+                        <span className="text-[14px] text-chart-3">
+                          Tia Maria
+                        </span>
+                      </div>
+                      <span className="font-bold text-primary">150,00 Kz</span>
+                    </div>
+
+                    <div className="p-3 flex justify-between items-center bg-background rounded-md">
+                      <div className="flex items-center gap-x-2">
+                        <span className="bg-[#CCEACC] size-8 flex rounded-full" />
+                        <span className="text-[14px] text-chart-3">
+                          Primo João
+                        </span>
+                      </div>
+                      <span className="font-bold text-primary">150,00 Kz</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[#47614A] flex-1 p-12 rounded-md">
+                <div className="space-y-2 text-background">
+                  <div className="size-14 bg-[#5F7A61] rounded-md flex justify-center items-center">
+                    <CalendarDays className="text-[#EFFFEC] size-5" />
+                  </div>
+                  <h3 className="font-semibold text-2xl">
+                    Eventos Organizados
+                  </h3>
+                  <p>
+                    Datas importantes, listas de tarefas e confirmações de
+                    presença em um calendário compartilhado que todos conseguem
+                    usar.
+                  </p>
+                </div>
+                <div className="pt-12 flex">
+                  <span className="size-10 bg-[#E7E8E9] rounded-full flex justify-center items-center border-2 border-[#5F7A61]">
+                    1
+                  </span>
+                  <span className="size-10 bg-[#E7E8E9] rounded-full flex justify-center items-center z-10 -ml-3.5 border-2 border-[#5F7A61]">
+                    2
+                  </span>
+                  <span className="size-10 bg-[#E7E8E9] rounded-full flex justify-center items-center z-20 -ml-3.5 border-2 border-[#5F7A61]">
+                    3
+                  </span>
+                  <span className="size-10 bg-[#5F7A61] text-background rounded-full flex justify-center items-center z-30 -ml-3.5 border-2 border-[#5F7A61]">
+                    +12
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-x-10">
+              <div className="p-12 w-[384px] h-77.5 shadow rounded-md">
+                <div className="space-y-2">
+                  <div className="size-14 bg-[#D5E3FF] rounded-md flex justify-center items-center">
+                    <CalendarDays className="text-[#EFFFEC] size-5" />
+                  </div>
+                  <h3 className="font-semibold text-2xl text-primary">
+                    União Familiar
+                  </h3>
+                  <p className="text-chart-2">
+                    Mantenha as memórias vivas em um feed privado, longe do
+                    ruído das redes sociais tradicionais.
+                  </p>
+                </div>
+                <Progress value={progress} className="w-full h-2 mt-6" />
+              </div>
+              <div className="bg-[#E7E8E9] flex-1 rounded-md p-12">
+                <div className="mt-12 flex justify-center gap-x-12 items-center">
+                  <div className="w-85.5 space-y-3">
+                    <h3 className="text-2xl font-semibold text-primary">
+                      Privacidade em Primeiro Lugar
+                    </h3>
+                    <p className="text-chart-2">
+                      Seus dados e fotos pertencem à sua família. Segurança de
+                      nível bancário para suas finanças e memórias.
+                    </p>
+                  </div>
+                  <div className="size-87 bg-red-600 rounded-md"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
       <Button onClick={handle}>Add 1 = {count}</Button>
     </>
