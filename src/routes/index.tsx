@@ -10,9 +10,12 @@ import {
   NotebookTabs,
   Search,
   Settings,
+  TrendingUp,
+  Users,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Progress } from "~/components/ui/progress";
+import { Image } from "@unpic/react";
 
 const filePath = "count.txt";
 
@@ -204,15 +207,13 @@ function Home() {
                   </p>
                 </div>
                 <div className="pt-12 flex">
-                  <span className="size-10 bg-[#E7E8E9] rounded-full flex justify-center items-center border-2 border-[#5F7A61]">
-                    1
-                  </span>
-                  <span className="size-10 bg-[#E7E8E9] rounded-full flex justify-center items-center z-10 -ml-3.5 border-2 border-[#5F7A61]">
-                    2
-                  </span>
-                  <span className="size-10 bg-[#E7E8E9] rounded-full flex justify-center items-center z-20 -ml-3.5 border-2 border-[#5F7A61]">
-                    3
-                  </span>
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <span
+                      key={index}
+                      className="size-10 bg-[#E7E8E9] rounded-full flex justify-center items-center z-10 -ml-3.5 border-2 border-[#5F7A61]"
+                    />
+                  ))}
+
                   <span className="size-10 bg-[#5F7A61] text-background rounded-full flex justify-center items-center z-30 -ml-3.5 border-2 border-[#5F7A61]">
                     +12
                   </span>
@@ -223,7 +224,7 @@ function Home() {
               <div className="p-12 w-[384px] h-77.5 shadow rounded-md">
                 <div className="space-y-2">
                   <div className="size-14 bg-[#D5E3FF] rounded-md flex justify-center items-center">
-                    <CalendarDays className="text-[#EFFFEC] size-5" />
+                    <Users className="text-[#505F79] size-5" />
                   </div>
                   <h3 className="font-semibold text-2xl text-primary">
                     União Familiar
@@ -246,7 +247,39 @@ function Home() {
                       nível bancário para suas finanças e memórias.
                     </p>
                   </div>
-                  <div className="size-87 bg-red-600 rounded-md"></div>
+                  <div className="size-87 rounded-md">
+                    <Image
+                      src="../../public/imagemfamlyhearthmankey.png"
+                      width={400}
+                      height={400}
+                      alt="A lovely bath"
+                      className="rounded-t-md rounded-r-md rounded-b-md rounded-l-md size-87 mt-8 flex z-20 ml-25"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="py-20 px-10">
+          <h3 className="text-4xl font-bold text-center text-primary">
+            Acompanhe o Ritmo da sua Família
+          </h3>
+          <div className="flex justify-between items-center">
+            <div>circle</div>
+            <div className="w-xl">
+              <div className="flex justify-between">
+                <span className="bg-[#CCEACC] size-12 rounded-sm flex justify-center items-center">
+                  <TrendingUp className="text-[#47614A]" />
+                </span>
+                <div>
+                  <h4 className="font-semibold text-2xl text-primary">
+                    Family Pulse
+                  </h4>
+                  <p className="leading-6 text-chart-2">
+                    Uma visualização clara da saúde financeira e do engajamento
+                    da sua família em projetos comuns.
+                  </p>
                 </div>
               </div>
             </div>
