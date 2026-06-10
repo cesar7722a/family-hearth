@@ -5,8 +5,11 @@ import { createServerFn } from "@tanstack/react-start";
 import React, { useState } from "react";
 import { Button } from "~/components/ui/button";
 import {
+  BadgeCheck,
   Bell,
   CalendarDays,
+  Globe,
+  Mail,
   NotebookTabs,
   Search,
   Settings,
@@ -46,11 +49,6 @@ export const Route = createFileRoute("/")({
 function Home() {
   const router = useRouter();
   const state = Route.useLoaderData();
-  const [count, setCounter] = useState(0);
-
-  const handle = () => {
-    setCounter(count + 1);
-  };
 
   const [progress, setProgress] = React.useState(13);
   React.useEffect(() => {
@@ -60,7 +58,7 @@ function Home() {
 
   return (
     <>
-      <header className="px-6 py-2 flex justify-between items-center">
+      <header className="px-6 py-4 flex justify-between items-center">
         <Link to="/" className="font-bold text-3xl text-primary">
           Family Hearth
         </Link>
@@ -98,8 +96,8 @@ function Home() {
           </Avatar>
         </div>
       </header>
-      <main className="px-6 py-40">
-        <div className="flex items-center justify-between">
+      <main className="py-40 bg-[#F8F9FA] pb-20">
+        <div className="flex items-center justify-between px-6">
           <div className="space-y-6 w-xl">
             <span className="px-18 py-1 bg-destructive/20 rounded-full font-semibold">
               O coração da sua família online
@@ -122,7 +120,7 @@ function Home() {
             </div>
           </div>
           <div className="w-3xl flex justify-center items-center">
-            <div className=" p-3 w-xl rotate-3 bg-white rounded-md shadow">
+            <div className=" p-3 w-xl rotate-3 bg-background rounded-md shadow">
               <div className="h-100 border-yellow-500 bg-foreground/40 rounded-md">
                 img
               </div>
@@ -141,7 +139,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="px-10 py-20 space-y-14 bg-[#F8F9FA]">
+        <div className="px-10 py-20 space-y-14 bg-[#F8F9FA] pt-36">
           <div className="text-center">
             <h2 className="font-bold text-[32px] text-primary">
               Tudo o que sua família precisa
@@ -261,18 +259,18 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="py-20 px-10">
+        <div className="py-20 px-10 space-y-14 bg-background">
           <h3 className="text-4xl font-bold text-center text-primary">
             Acompanhe o Ritmo da sua Família
           </h3>
           <div className="flex justify-between items-center">
-            <div>circle</div>
-            <div className="w-xl">
-              <div className="flex justify-between">
-                <span className="bg-[#CCEACC] size-12 rounded-sm flex justify-center items-center">
+            <div className="h-80">circle</div>
+            <div className="space-y-4">
+              <div className="flex gap-x-4">
+                <span className="bg-[#CCEACC] size-12 rounded-sm flex justify-center items-center P-2">
                   <TrendingUp className="text-[#47614A]" />
                 </span>
-                <div>
+                <div className="w-127.5">
                   <h4 className="font-semibold text-2xl text-primary">
                     Family Pulse
                   </h4>
@@ -282,11 +280,71 @@ function Home() {
                   </p>
                 </div>
               </div>
+
+              <div className="flex gap-x-4">
+                <span className="bg-[#D5E3FF] size-12 rounded-sm flex justify-center items-center P-2">
+                  <BadgeCheck className="text-[#505F79]" />
+                </span>
+                <div className="w-127.5">
+                  <h4 className="font-semibold text-2xl text-primary">
+                    Confiança Digital
+                  </h4>
+                  <p className="leading-6 text-chart-2">
+                    Transparência total gera tranquilidade. Todos sabem para
+                    onde vai cada centavo da contribuição familiar.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div className="py-40 px-76 bg-[#47614A] text-background text-center flex justify-center items-center">
+          <div className="space-y-6 w-172.5">
+            <h1 className="font-bold text-5xl leading-14">
+              Pronto para acender a lareira digital da sua família?
+            </h1>
+            <p className="text-lg">
+              Junte-se a milhares de famílias que já estão redescobrindo o
+              prazer de se organizar sem estresse.
+            </p>
+            <div className="px-21.25">
+              <Button className="bg-background  hover:bg-accent font-semibold text-2xl py-6 text-primary">
+                Criar Página Familiar Gratuitamente
+              </Button>
+            </div>
+            <p className="text-xs">
+              Não requer cartão de crédito para começar.
+            </p>
+          </div>
+        </div>
+        <div className="" />
       </main>
-      <Button onClick={handle}>Add 1 = {count}</Button>
+      <footer className="py-12 px-6 flex justify-between items-center">
+        <div className="space-y-2">
+          <h1 className="font-bold text-4xl text-primary">Family Hearth</h1>
+          <p className="text-xs text-chart-2">
+            © 2024 Family Hearth Digital. All rights reserved.
+          </p>
+        </div>
+        <div className="soace-x-3">
+          <ul className="flex gap-x-4">
+            {Array.from([
+              "Privacy Policy",
+              "Terms of Service",
+              "Contact Us",
+            ]).map((v, index) => (
+              <li className="text-chart-2 text-sm" key={index}>
+                {v}
+              </li>
+            ))}
+
+            <div className="flex gap-x-3">
+              <Globe className="size-4 text-chart-2" />
+              <Mail className="size-4 text-chart-2" />
+            </div>
+          </ul>
+        </div>
+      </footer>
     </>
   );
 }
