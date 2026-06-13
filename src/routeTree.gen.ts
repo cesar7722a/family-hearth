@@ -9,48 +9,110 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MyfamilyRouteRouteImport } from './routes/$myfamily/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as MyfamilyFamilyIdRouteImport } from './routes/myfamily/$familyId'
+import { Route as MyfamilyMembrosRouteImport } from './routes/$myfamily/membros'
+import { Route as MyfamilyFinancasRouteImport } from './routes/$myfamily/financas'
+import { Route as MyfamilyFamilyRouteImport } from './routes/$myfamily/family'
+import { Route as MyfamilyEventosRouteImport } from './routes/$myfamily/eventos'
 
+const MyfamilyRouteRoute = MyfamilyRouteRouteImport.update({
+  id: '/$myfamily',
+  path: '/$myfamily',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MyfamilyFamilyIdRoute = MyfamilyFamilyIdRouteImport.update({
-  id: '/myfamily/$familyId',
-  path: '/myfamily/$familyId',
-  getParentRoute: () => rootRouteImport,
+const MyfamilyMembrosRoute = MyfamilyMembrosRouteImport.update({
+  id: '/membros',
+  path: '/membros',
+  getParentRoute: () => MyfamilyRouteRoute,
+} as any)
+const MyfamilyFinancasRoute = MyfamilyFinancasRouteImport.update({
+  id: '/financas',
+  path: '/financas',
+  getParentRoute: () => MyfamilyRouteRoute,
+} as any)
+const MyfamilyFamilyRoute = MyfamilyFamilyRouteImport.update({
+  id: '/family',
+  path: '/family',
+  getParentRoute: () => MyfamilyRouteRoute,
+} as any)
+const MyfamilyEventosRoute = MyfamilyEventosRouteImport.update({
+  id: '/eventos',
+  path: '/eventos',
+  getParentRoute: () => MyfamilyRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/myfamily/$familyId': typeof MyfamilyFamilyIdRoute
+  '/$myfamily': typeof MyfamilyRouteRouteWithChildren
+  '/$myfamily/eventos': typeof MyfamilyEventosRoute
+  '/$myfamily/family': typeof MyfamilyFamilyRoute
+  '/$myfamily/financas': typeof MyfamilyFinancasRoute
+  '/$myfamily/membros': typeof MyfamilyMembrosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/myfamily/$familyId': typeof MyfamilyFamilyIdRoute
+  '/$myfamily': typeof MyfamilyRouteRouteWithChildren
+  '/$myfamily/eventos': typeof MyfamilyEventosRoute
+  '/$myfamily/family': typeof MyfamilyFamilyRoute
+  '/$myfamily/financas': typeof MyfamilyFinancasRoute
+  '/$myfamily/membros': typeof MyfamilyMembrosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/myfamily/$familyId': typeof MyfamilyFamilyIdRoute
+  '/$myfamily': typeof MyfamilyRouteRouteWithChildren
+  '/$myfamily/eventos': typeof MyfamilyEventosRoute
+  '/$myfamily/family': typeof MyfamilyFamilyRoute
+  '/$myfamily/financas': typeof MyfamilyFinancasRoute
+  '/$myfamily/membros': typeof MyfamilyMembrosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/myfamily/$familyId'
+  fullPaths:
+    | '/'
+    | '/$myfamily'
+    | '/$myfamily/eventos'
+    | '/$myfamily/family'
+    | '/$myfamily/financas'
+    | '/$myfamily/membros'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/myfamily/$familyId'
-  id: '__root__' | '/' | '/myfamily/$familyId'
+  to:
+    | '/'
+    | '/$myfamily'
+    | '/$myfamily/eventos'
+    | '/$myfamily/family'
+    | '/$myfamily/financas'
+    | '/$myfamily/membros'
+  id:
+    | '__root__'
+    | '/'
+    | '/$myfamily'
+    | '/$myfamily/eventos'
+    | '/$myfamily/family'
+    | '/$myfamily/financas'
+    | '/$myfamily/membros'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  MyfamilyFamilyIdRoute: typeof MyfamilyFamilyIdRoute
+  MyfamilyRouteRoute: typeof MyfamilyRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/$myfamily': {
+      id: '/$myfamily'
+      path: '/$myfamily'
+      fullPath: '/$myfamily'
+      preLoaderRoute: typeof MyfamilyRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -58,19 +120,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/myfamily/$familyId': {
-      id: '/myfamily/$familyId'
-      path: '/myfamily/$familyId'
-      fullPath: '/myfamily/$familyId'
-      preLoaderRoute: typeof MyfamilyFamilyIdRouteImport
-      parentRoute: typeof rootRouteImport
+    '/$myfamily/membros': {
+      id: '/$myfamily/membros'
+      path: '/membros'
+      fullPath: '/$myfamily/membros'
+      preLoaderRoute: typeof MyfamilyMembrosRouteImport
+      parentRoute: typeof MyfamilyRouteRoute
+    }
+    '/$myfamily/financas': {
+      id: '/$myfamily/financas'
+      path: '/financas'
+      fullPath: '/$myfamily/financas'
+      preLoaderRoute: typeof MyfamilyFinancasRouteImport
+      parentRoute: typeof MyfamilyRouteRoute
+    }
+    '/$myfamily/family': {
+      id: '/$myfamily/family'
+      path: '/family'
+      fullPath: '/$myfamily/family'
+      preLoaderRoute: typeof MyfamilyFamilyRouteImport
+      parentRoute: typeof MyfamilyRouteRoute
+    }
+    '/$myfamily/eventos': {
+      id: '/$myfamily/eventos'
+      path: '/eventos'
+      fullPath: '/$myfamily/eventos'
+      preLoaderRoute: typeof MyfamilyEventosRouteImport
+      parentRoute: typeof MyfamilyRouteRoute
     }
   }
 }
 
+interface MyfamilyRouteRouteChildren {
+  MyfamilyEventosRoute: typeof MyfamilyEventosRoute
+  MyfamilyFamilyRoute: typeof MyfamilyFamilyRoute
+  MyfamilyFinancasRoute: typeof MyfamilyFinancasRoute
+  MyfamilyMembrosRoute: typeof MyfamilyMembrosRoute
+}
+
+const MyfamilyRouteRouteChildren: MyfamilyRouteRouteChildren = {
+  MyfamilyEventosRoute: MyfamilyEventosRoute,
+  MyfamilyFamilyRoute: MyfamilyFamilyRoute,
+  MyfamilyFinancasRoute: MyfamilyFinancasRoute,
+  MyfamilyMembrosRoute: MyfamilyMembrosRoute,
+}
+
+const MyfamilyRouteRouteWithChildren = MyfamilyRouteRoute._addFileChildren(
+  MyfamilyRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  MyfamilyFamilyIdRoute: MyfamilyFamilyIdRoute,
+  MyfamilyRouteRoute: MyfamilyRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
